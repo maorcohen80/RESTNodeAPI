@@ -1,4 +1,4 @@
-const { validationResult } = require('express-validator/check');
+const { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -37,8 +37,11 @@ exports.login = async (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
   let loadedUser;
+  console.log('email', email)
+  console.log('password', password)
   try {
     const user = await User.findOne({ email: email });
+    console.log('user', user)
     if (!user) {
       const error = new Error('A user with this email could not be found.');
       error.statusCode = 401;

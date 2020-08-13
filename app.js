@@ -61,9 +61,10 @@ app.use((error, req, res, next) => {
 
 mongoose
   .connect(
-    'mongodb+srv://maximilian:9u4biljMQc4jjqbe@cluster0-ntrwp.mongodb.net/messages?retryWrites=true'
+    'mongodb+srv://maor-cohen:Maor2020@cluster0.dx0xg.mongodb.net/test?retryWrites=true&w=majority'
   )
   .then(result => {
+    console.log('connected')
     const server = app.listen(8080);
     const io = require('./socket').init(server);
     io.on('connection', socket => {
